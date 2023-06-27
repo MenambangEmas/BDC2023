@@ -2,9 +2,9 @@ import os
 import random
 import shutil
 
-input_folder = 'raw_data'
-output_folder = 'datasets'
-test_size = 0.2
+input_folder = 'data_plat'
+output_folder = 'data_plat_split'
+test_size = 0.1
 
 # Create output folder if it doesn't exist
 os.makedirs(output_folder, exist_ok=True)
@@ -20,6 +20,9 @@ assert len(labels_list) == len(images_list)
 
 test_length = int(len(labels_list) * test_size)
 train_length = len(labels_list) - test_length
+print("Total number of images:", len(labels_list))
+print("Number of images in train set:", train_length)
+print("Number of images in validation set:", test_length)
 
 test_index = random.sample(range(0, len(labels_list)), test_length)
 train_index = [i for i in range(0, len(labels_list)) if i not in test_index]
